@@ -1,1 +1,54 @@
-<h1>Index</h1>
+
+<div id = "index-container">
+	<div id = "side-container">
+		<div id = "logo">
+			Messanger
+		</div>	
+		<div id = "index-connection-status">
+
+		</div>
+		<div id = "new-message-button">
+			New Message
+		</div>
+		<div id = "setting-button">
+			Setting
+		</div>
+		<div id = "sign-out-button">
+			<%= link_to "Sign Out",  destroy_user_session_path ,method: :delete %>
+		</div>
+	</div>
+	<div id = "conversation-container">
+
+		<div id = "new-message-div">
+			<%= form_for(:conversation, url: conversations_path) do |f| %>
+			<%= f.label "to" %>
+			<%=	text_field_tag :receiver_email %>
+			<br>
+			<%= f.label "message" %>
+			<%= text_area_tag :message_to_send %>
+			<%= f.submit "Send" %>
+			<% end %>
+		</div>
+		<div id = "conversation-holder">
+			<% @conversations.each do |conversation| %>
+			From:
+			<%= conversation.receiver_id.email %>
+			<br>
+			To:
+			<%= conversation.sender_id.email %>
+			<% end %>
+			<br>
+
+
+		</div>
+
+
+	</div>
+</div>
+<script type="text/javascript">
+$("#new-message-button").on("click",function(){
+	$("#new-message-div").slideToggle();
+
+});
+
+</script>

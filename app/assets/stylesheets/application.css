@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+#index-container{
+
+}
+#side-container{
+	display:inline-block;
+	width:20%;
+	background-color:green;
+
+
+
+}
+#conversation-container{
+	display:inline-block;
+	width:80%;
+}
+#new-message-div{
+	display:none;
+	text-align:center;
+}
+#new-message-button:hover{
+	cursor:pointer;
+}

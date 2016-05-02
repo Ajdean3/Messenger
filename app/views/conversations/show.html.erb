@@ -1,0 +1,24 @@
+
+<div id = "index-container">
+	<div id = "side-container">
+		<div id = "logo">
+			Messanger
+		</div>	
+		<div id = "index-connection-status">
+
+		</div>
+
+	</div>
+	<div id = "conversation-container">
+		<div id = "message-holder">
+			<% @conversation.each do |message| %>
+			<%= message.user_id.email %>: <%= message.text %>
+			<% end %>
+			<br>
+
+
+		</div>
+
+
+	</div>
+</div>
