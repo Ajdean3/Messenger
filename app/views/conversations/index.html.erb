@@ -31,11 +31,12 @@
 		</div>
 		<div id = "conversation-holder">
 			<% @conversations.each do |conversation| %>
+			<br>
 			From:
-			<%= conversation.receiver_id.email %>
+			<%=	User.find(conversation.sender_id).email %>
 			<br>
 			To:
-			<%= conversation.sender_id.email %>
+			<%= User.find(conversation.receiver_id).email %>
 			<% end %>
 			<br>
 

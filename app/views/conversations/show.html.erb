@@ -11,8 +11,10 @@
 	</div>
 	<div id = "conversation-container">
 		<div id = "message-holder">
-			<% @conversation.each do |message| %>
-			<%= message.user_id.email %>: <%= message.text %>
+			<% @conversation.messages.each do |message| %>
+			<br>
+			<%= User.find(message.user_id).email %>: <%= message.text %>
+			<br>
 			<% end %>
 			<br>
 

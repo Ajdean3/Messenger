@@ -1,32 +1,38 @@
 class ConversationsController < ApplicationController
-	before_action :authenticate_user!, only: [:index, :create]
+	before_action :authenticate_user!
 	def index
-		@conversations = Conversation.all
+		@conversations = Conversation.all.where('sender_id=? OR receiver_id=?',current_user,current_user)
 	end
+
 	def create
-		@conversations = Conversation.all
-		@conversation = Conversation.new
+		
 		receiver = User.all.where('email = ?', params[:receiver_email]).first
 
 
+		#if the receiver is found
 		if receiver
+			#if the conversation doesnt existm then create new, else go to their convo.
 			if Conversation.all.where('(sender_id=? and receiver_id = ?) || (sender_id=? and receiver_id=?)',current_user,receiver ,receiver, current_user).blank?
-
+				@conversation = Conversation.new
 				@conversation.receiver_id = receiver.id
 				@conversation.sender_id = current_user.id
 				@conversation.message_count = 1
-				if @conversation.save
+				#validation to false due to "user must exist" bug
+				if @conversation.save(validate: false)
 					@conversation.messages.create!(user_id: current_user.id, text: params[:message_to_send])
-
+					#render plain: "created successfully"
 					redirect_to root_path
 				else
+					#@conversation = Conversation.create!(receiver_id: receiver.id, sender_id: current_user.id, message_count: 1)
+					#render plain: @conversation.errors.full_messages
+					@conversations = Conversation.all.where('sender_id=? OR receiver_id=?',current_user,current_user)
 					render :index
 				end
 			else
 				@conversation = Conversation.all.where('(sender_id=? and receiver_id = ?) || (sender_id=? and receiver_id=?)',current_user,receiver ,receiver, current_user).first
 				@conversation.messages.create!(user_id: current_user.id, text: params[:message_to_send])
 				@conversation.message_count = @conversation.message_count + 1
-				@conversation.save
+				@conversation.save(validate: false)
 				redirect_to @conversation
 			end
 		else
