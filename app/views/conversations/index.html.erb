@@ -37,8 +37,12 @@
 			<br>
 			To:
 			<%= User.find(conversation.receiver_id).email %>
+			<div>
+				<%= link_to "Enter", conversation %>
+			</div>
 			<% end %>
 			<br>
+
 
 
 		</div>

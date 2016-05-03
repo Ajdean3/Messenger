@@ -5,10 +5,7 @@ class ConversationsController < ApplicationController
 	end
 
 	def create
-		
 		receiver = User.all.where('email = ?', params[:receiver_email]).first
-
-
 		#if the receiver is found
 		if receiver
 			#if the conversation doesnt existm then create new, else go to their convo.
