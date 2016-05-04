@@ -21,9 +21,10 @@
 
 		</div>
 		<div id = "message-input">
-			<%= form_for(:conversation, url: conversation_message_path, method: :get) do |f|%>
+			<%= form_for(:conversation, url: conversation_message_path, method: :get, remote: true) do |f|%>
 			<%= f.label "Message" %>
 			<%= text_area_tag :message_to_send %>
+			<%= f.hidden_field :conversation_id, value: @conversation.id %>
 			<%= f.submit "send" %>
 			<% end %>
 		</div>
