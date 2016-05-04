@@ -20,8 +20,6 @@ class ConversationsController < ApplicationController
 					#render plain: "created successfully"
 					redirect_to root_path
 				else
-					#@conversation = Conversation.create!(receiver_id: receiver.id, sender_id: current_user.id, message_count: 1)
-					#render plain: @conversation.errors.full_messages
 					@conversations = Conversation.all.where('sender_id=? OR receiver_id=?',current_user,current_user)
 					render :index
 				end
@@ -37,8 +35,6 @@ class ConversationsController < ApplicationController
 		end
 	end
 	def show
-
 		@conversation = Conversation.find(params[:id])
-
 	end
 end

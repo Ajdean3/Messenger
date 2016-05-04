@@ -20,6 +20,13 @@
 
 
 		</div>
+		<div id = "message-input">
+			<%= form_for(:conversation, url: conversation_message_path, method: :get) do |f|%>
+			<%= f.label "Message" %>
+			<%= text_area_tag :message_to_send %>
+			<%= f.submit "send" %>
+			<% end %>
+		</div>
 
 
 	</div>

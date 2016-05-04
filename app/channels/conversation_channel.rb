@@ -8,6 +8,8 @@ class ConversationChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def speak
+  def speak(data)
+  	ActionCable.server.broadcast "room_channel", {user_id: data['user_id'], text: data['text'], conversation_id: data['conversation_id']}
+  	Message.create!(user_id: data['user_id'], text: data['text'], conversation_id: data['conversation_id'])
   end
 end
