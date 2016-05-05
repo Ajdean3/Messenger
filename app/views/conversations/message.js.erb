@@ -1,1 +1,2 @@
-App.conversation.speak("<%= current_user.id %>","<%= @message %>","<%= @conversation.id %>");
+//escape needed for "'"
+App.conversation.speak("<%= current_user.email %>","<%= current_user.id %>","<%= @message.html_safe %>","<%= @conversation.id %>");
