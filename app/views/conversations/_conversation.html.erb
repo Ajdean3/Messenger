@@ -1,4 +1,4 @@
-<div id = "<%= @conversation.id %>" class = "message-holder">
+<div id = "c_<%= @conversation.id %>" class = "message-holder">
 	<% @conversation.messages.each do |message| %>
 	<br>
 	<%= User.find(message.user_id).email %>: <%= message.text %>

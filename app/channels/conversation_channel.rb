@@ -9,7 +9,8 @@ class ConversationChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-  	ActionCable.server.broadcast "conversation_channel", {user_email: data['user_email'], text: data['text'], conversation_id: data['conversation_id']}
-  	Message.create!(user_id: data['user_id'], text: data['text'], conversation_id: data['conversation_id'])
+    @current_message = Message.create!(user_id: data['user_id'], text: data['text'], conversation_id: data['conversation_id'])
+  	ActionCable.server.broadcast "conversation_channel", {user_email: data['user_email'], text: data['text'], conversation_id: data['conversation_id'], current_message: @current_message.id }
+  	
   end
 end
