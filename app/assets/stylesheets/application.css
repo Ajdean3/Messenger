@@ -48,7 +48,7 @@
 	width:100%;
 	display:block;
 }
-#message-holder{
+.message-holder{
 	height:600px;
 	width:80%;
 	overflow:scroll;

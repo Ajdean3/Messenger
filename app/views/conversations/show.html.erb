@@ -10,16 +10,9 @@
 
 	</div>
 	<div id = "conversation-container">
-		<div id = "message-holder">
-			<% @conversation.messages.each do |message| %>
-			<br>
-			<%= User.find(message.user_id).email %>: <%= message.text %>
-			<br>
-			<% end %>
-			<br>
+		
 
-
-		</div>
+		<%= render @conversation %>
 		<div id = "message-input">
 			<%= form_for(:conversation, url: conversation_message_path, method: :get, remote: true) do |f|%>
 			<%= f.label "Message" %>
