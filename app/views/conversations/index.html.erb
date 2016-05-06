@@ -2,19 +2,20 @@
 <div id = "index-container">
 	<div id = "side-container">
 		<div id = "logo">
-			Messanger
+			<%= image_tag("quickmessanger-logo.jpeg", style: "width:100%") %>
+			<div id = "logo-text">QuickMessanger</div>
 		</div>	
 		<div id = "index-connection-status">
 
 		</div>
 		<div id = "new-message-button">
-			New Message
+			<div id = "new-message-text">New Message</div>
 		</div>
 		<div id = "setting-button">
-			Setting
+			<div id = "setting-text">Setting</div>
 		</div>
 		<div id = "sign-out-button">
-			<%= link_to "Sign Out",  destroy_user_session_path ,method: :delete %>
+			<div id = "sign-out-text"><%= link_to "Sign Out",  destroy_user_session_path ,method: :delete %></div>
 		</div>
 	</div>
 	<div class = "conversation-container">
@@ -31,7 +32,7 @@
 		</div>
 		<div id = "ch_<%= current_user.id %>" class = "conversation-holder">
 			<% @conversations.each do |conversation| %>
-			<div>
+			<div class = "conversation">
 				<br>
 				From:
 				<%=	User.find(conversation.sender_id).email %>
