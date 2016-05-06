@@ -32,22 +32,32 @@
 		</div>
 		<div id = "ch_<%= current_user.id %>" class = "conversation-holder">
 			<% @conversations.each do |conversation| %>
+			<%= link_to conversation do %>
 			<div class = "conversation">
-				<br>
-				From:
-				<%=	User.find(conversation.sender_id).email %>
-				<br>
-				To:
-				<%= User.find(conversation.receiver_id).email %>
+				<div class = "conversation-1st-row">
+					<% if current_user.id == conversation.sender_id %>
+					<div style = "float:left;display:inline-block"><%= User.find(conversation.receiver_id).email %></div>
+					<% else %>
+					<div style = "float:left;display:inline-block"><%= User.find(conversation.sender_id).email %></div>
+					<% end %>
+					<div style = "float:right;display:inline-block"><%= time_ago_in_words(conversation.messages.last.created_at) %></div>
+					<div style = "clear:both">
+					</div>
+
+					
+				</div>
+				<div class = "conversation-2nd-row">
+					<div style = "padding-left:3rem;color:rgb(155, 174, 200);">
+						<%= truncate(conversation.messages.last.text, length: 60) %>
+					</div>
+				</div>
 				<div>
-					<%= link_to "Enter", conversation %>
+					
 				</div>
 			</div>
 			<% end %>
+			<% end %>
 			<br>
-
-
-
 		</div>
 
 

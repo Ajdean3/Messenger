@@ -113,16 +113,53 @@ a{
 }
 .message-holder{
 	height:600px;
-	width:80%;
-	overflow:scroll;
-}
-.conversation{
-	box-shadow: 5px 5px 5px 5px black;
-	width:80%;
-	padding:2rem;
-	margin-top:2rem;
-	margin-left:3rem;
-	border-radius: .5rem;
-	background-color: white;
+	width:96%;
+	background-color:rgb(235,235,235);
+	overflow:auto;
+	margin-left:1.5rem;
+	border-radius: 0.3rem;
+	border
+
 
 }
+.conversation{
+	
+	width:80%;
+	padding-right:3rem;
+	padding-left:1.5rem;
+	padding-top:0.7rem;
+	padding-bottom:1.5rem;
+	margin-top:1.5rem;
+	margin-left:2rem;
+	border-radius: .3rem;
+	background-color: white;
+	font-weight:bold;
+	font-family: "Comic Sans MS";
+	font-size:1.5rem;
+
+
+}
+.conversation:hover{
+	
+}
+.my-message{
+	float:left;
+	font-size:1.3rem;
+	font-family: "Comic Sans MS";
+}
+.other-message{
+	float:right;
+	font-size:1.3rem;
+	font-family: "Comic Sans MS";
+}
+.my-message-user{
+	text-align: left;
+	font-size:0.6rem;
+	font-family: "Comic Sans MS";
+}
+.other-message-user{
+	text-align:right;
+	font-size:0.6rem;
+	font-family: "Comic Sans MS";
+}
+
