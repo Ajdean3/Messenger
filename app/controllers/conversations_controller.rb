@@ -9,7 +9,7 @@ class ConversationsController < ApplicationController
 		#if the receiver is found
 		if receiver
 			#if the conversation doesnt existm then create new, else go to their convo.
-			if Conversation.all.where('(sender_id=? and receiver_id = ?) || (sender_id=? and receiver_id=?)',current_user,receiver ,receiver, current_user).blank?
+			if Conversation.all.where('(sender_id=? and receiver_id = ?) OR (sender_id=? and receiver_id=?)',current_user,receiver ,receiver, current_user).blank?
 				@conversation = Conversation.new
 				@conversation.receiver_id = receiver.id
 				@conversation.sender_id = current_user.id
@@ -24,7 +24,7 @@ class ConversationsController < ApplicationController
 					render :index
 				end
 			else
-				@conversation = Conversation.all.where('(sender_id=? and receiver_id = ?) || (sender_id=? and receiver_id=?)',current_user,receiver ,receiver, current_user).first
+				@conversation = Conversation.all.where('(sender_id=? and receiver_id = ?) OR (sender_id=? and receiver_id=?)',current_user,receiver ,receiver, current_user).first
 				@conversation.messages.create!(user_id: current_user.id, text: params[:message_to_send])
 				@conversation.message_count = @conversation.message_count + 1
 				@conversation.save(validate: false)
