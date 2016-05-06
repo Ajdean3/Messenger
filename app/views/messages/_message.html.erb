@@ -1,0 +1,20 @@
+<br>
+	<% if message.user_id == current_user.id %>
+	<br>
+	<div class = "my-message">
+		<div class = "my-message-user"><%= User.find(message.user_id).email %></div>
+		<div>
+			<%= message.text %>
+		</div>
+	</div>
+	<% else %>
+	<br>
+	<div class = "other-message">
+		<div class = "other-message-user"><%= User.find(message.user_id).email %></div>
+		<div>
+			<%= message.text %>
+		</div>
+	</div>
+	<% end %>
+<br>
+	

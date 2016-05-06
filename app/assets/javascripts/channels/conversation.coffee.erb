@@ -7,15 +7,15 @@ App.conversation = App.cable.subscriptions.create "ConversationChannel",
     # Called when the subscription has been terminated by the server
     
   received: (data) ->
-
-
-  	if($("#c_#{data['conversation_id']}").length == "0")
+    conversation_container = $("#c_#{data['conversation_id']}")
+    if $("#c_#{data['conversation_id']}").length == "0"
       $("#ch_#{data['receiver_id']}").append("<div><br>From:#{data['user_email']}<br>To:#{data['receiver_email']}</div>");
+      
+    conversation_container.append("<div class = 'message'>#{data['user_email']}: #{data['text']}</div><br>");
+    alert $(".message-holder");
+     
     
-    $("#c_#{data['conversation_id']}").append("<div class = 'message'>#{data['user_email']}: #{data['text']}</div><br>");
-
-    event.preventDefault();
-    $('.message').focus();
   speak: (user_email, user_id, text, conversation_id) ->
+    $("#message-input").val("")
     @perform 'speak', {user_email: user_email, user_id: user_id , text: text, conversation_id: conversation_id }
 

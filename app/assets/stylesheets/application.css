@@ -25,6 +25,12 @@ body{
 }
 a{
 	text-decoration: none;
+	color:black;
+
+}
+a:visited{
+	text-decoration: none;
+	color:black;
 }
 #index-container{
 	width:100%;
@@ -146,11 +152,15 @@ a{
 	float:left;
 	font-size:1.3rem;
 	font-family: "Comic Sans MS";
+	background-color: rgb(106, 175, 230);
+	border-radius: 0.3rem;
 }
 .other-message{
 	float:right;
 	font-size:1.3rem;
 	font-family: "Comic Sans MS";
+	background-color:gray;
+	border-radius: 0.3rem;
 }
 .my-message-user{
 	text-align: left;
