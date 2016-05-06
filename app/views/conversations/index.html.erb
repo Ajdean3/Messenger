@@ -17,7 +17,7 @@
 			<%= link_to "Sign Out",  destroy_user_session_path ,method: :delete %>
 		</div>
 	</div>
-	<div id = "conversation-container">
+	<div class = "conversation-container">
 
 		<div id = "new-message-div">
 			<%= form_for(:conversation, url: conversations_path) do |f| %>
@@ -29,16 +29,18 @@
 			<%= f.submit "Send" %>
 			<% end %>
 		</div>
-		<div id = "conversation-holder">
+		<div id = "ch_<%= current_user.id %>" class = "conversation-holder">
 			<% @conversations.each do |conversation| %>
-			<br>
-			From:
-			<%=	User.find(conversation.sender_id).email %>
-			<br>
-			To:
-			<%= User.find(conversation.receiver_id).email %>
 			<div>
-				<%= link_to "Enter", conversation %>
+				<br>
+				From:
+				<%=	User.find(conversation.sender_id).email %>
+				<br>
+				To:
+				<%= User.find(conversation.receiver_id).email %>
+				<div>
+					<%= link_to "Enter", conversation %>
+				</div>
 			</div>
 			<% end %>
 			<br>

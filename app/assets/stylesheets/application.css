@@ -28,7 +28,7 @@
 
 
 }
-#conversation-container{
+.conversation-container{
 	display:inline-block;
 	background-color:yellow;
 	width:80%;

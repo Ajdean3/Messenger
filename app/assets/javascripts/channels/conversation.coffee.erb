@@ -8,10 +8,10 @@ App.conversation = App.cable.subscriptions.create "ConversationChannel",
     
   received: (data) ->
   	
-    $("#c_#{data['conversation_id']}").append("<div class = 'message'>#{data['user_email']}: #{data['text']}</div><br>")
+    $("#c_#{data['conversation_id']}").append("<div class = 'message'>#{data['user_email']}: #{data['text']}</div><br>");
+    $("#ch_#{data['receiver_id']}").append("<div><br>From:#{data['user_email']}<br>To:#{data['receiver_email']}</div>");
     event.preventDefault();
     $('.message').focus();
   speak: (user_email, user_id, text, conversation_id) ->
-    
     @perform 'speak', {user_email: user_email, user_id: user_id , text: text, conversation_id: conversation_id }
 
