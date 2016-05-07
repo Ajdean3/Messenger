@@ -13,7 +13,7 @@ class ConversationChannel < ApplicationCable::Channel
   	@receiver_id = Conversation.find(data['conversation_id']).receiver_id
     #find the conversation, and its user.
     @receiver_email = User.find(@receiver_id).email
-    ActionCable.server.broadcast "conversation_channel", {user_email: data['user_email'], text: data['text'], conversation_id: data['conversation_id'], receiver_id: @receiver_id, receiver_email: @receiver_email ,current_message: @current_message.id }
+    ActionCable.server.broadcast "conversation_channel", {user_email: data['user_email'], text: data['text'], conversation_id: data['conversation_id'], current_user_id: data['user_id'], receiver_id: @receiver_id, receiver_email: @receiver_email ,current_message: @current_message.id }
   	
   end
 end
