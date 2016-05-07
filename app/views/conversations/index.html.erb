@@ -20,14 +20,13 @@
 	</div>
 	<div class = "conversation-container">
 
-		<div id = "new-message-div">
+		<div class = "new-message-div">
 			<%= form_for(:conversation, url: conversations_path) do |f| %>
-			<%= f.label "to" %>
-			<%=	text_field_tag :receiver_email %>
-			<br>
-			<%= f.label "message" %>
+			<%=	text_field_tag :receiver_email, params[:receiver_email], placeholder: "Recipient Email", style: "color:black" %>
 			<%= text_area_tag :message_to_send %>
-			<%= f.submit "Send" %>
+			<div style = "float:right;margin-left:2rem" >
+				<%= f.submit "Send" %>
+			</div>
 			<% end %>
 		</div>
 		<div id = "ch_<%= current_user.id %>" class = "conversation-holder">
@@ -40,7 +39,7 @@
 					<% else %>
 					<div style = "float:left;display:inline-block"><%= User.find(conversation.sender_id).email %></div>
 					<% end %>
-					<div style = "float:right;display:inline-block"><%= time_ago_in_words(conversation.messages.last.created_at) %></div>
+					<div style = "float:right;display:inline-block"><%= time_ago_in_words(conversation.messages.last.created_at) %> ago.</div>
 					<div style = "clear:both">
 					</div>
 
@@ -65,7 +64,7 @@
 </div>
 <script type="text/javascript">
 $("#new-message-button").on("click",function(){
-	$("#new-message-div").slideToggle();
+	$(".new-message-div").slideToggle();
 
 });
 

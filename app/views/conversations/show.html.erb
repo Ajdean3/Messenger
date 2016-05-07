@@ -28,7 +28,9 @@
 			<div class = "show-message-input">
 				<%= text_area_tag :message_to_send %>
 			</div>
-			<div class = "show-submit-button"><%= f.submit "send", class: "send-button" %></div>
+			<div class = "show-submit-button">
+				<%= f.submit "send", class: "send-button" %>
+			</div>
 			<% end %>
 		</div>
 
@@ -36,5 +38,5 @@
 	</div>
 	<div style = "clear:both">
 	</div>
-	<%= link_to "Back", root_path, class: "back-button" %>
+	
 </div>
