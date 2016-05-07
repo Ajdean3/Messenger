@@ -10,8 +10,7 @@ App.conversation = App.cable.subscriptions.create "ConversationChannel",
     conversation_container = $("#c_#{data['conversation_id']}")
     if $("#c_#{data['conversation_id']}").length == "0"
       $("#ch_#{data['receiver_id']}").append("<div><br>From:#{data['user_email']}<br>To:#{data['receiver_email']}</div>");
-    alert("hey #{data['user_email']}")
-    if data['current_user_id'] == data['receiver_id']
+    if window.id == data['current_user_id']
       conversation_container.append("<br><br><div class = 'my-message'><div class = 'my-message-user'>#{data['user_email']}</div><div>#{data['text']}</div></div><br>")
     else
       conversation_container.append("<br><br><div class = 'other-message'><div class = 'other-message-user'>#{data['user_email']}</div><div>#{data['text']}</div></div><br>")
