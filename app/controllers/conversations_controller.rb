@@ -31,7 +31,7 @@ class ConversationsController < ApplicationController
 				redirect_to @conversation
 			end
 		else
-			redirect_to root_path , notice: "There is no user"
+			redirect_to root_path , alert: "There is no user"
 		end
 	end
 	def show

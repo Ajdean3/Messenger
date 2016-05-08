@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Messanger</title>
+    <title>QuickMessanger</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,8 +9,22 @@
   </head>
 
   <body>
-  	<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice||alert %>
+    <div class = "notification">
+    	<p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+    <% end %>
     <%= yield %>
+    <script>
+     $(document).ready(function(){
+      setTimeout(function(){
+        $('.notification').fadeOut(2000,function(){
+          $("this").remove();
+        });
+      },2000);
+     });
+    </script>
   </body>
+
 </html>
