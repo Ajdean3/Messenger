@@ -1,24 +1,13 @@
 # README
+This Messanger App is currently in version Alpha. It's functional,
+however, the designs are not fully completed yet.
+What this app is capable of doing right now:
+* Send message to other user (through their email)
+* AJAX on both end, instant messaging
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+What this app is not capable of doing right now:
+* Setting
+* Deleting a conversation
+* Notification
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

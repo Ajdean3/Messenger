@@ -8,14 +8,17 @@
 		<div id = "index-connection-status">
 
 		</div>
-		<div id = "new-message-button">
-			<div id = "new-message-text">New Message</div>
+		<div>
+			<div id = "regular-button">New Message</div>
 		</div>
-		<div id = "setting-button">
-			<div id = "setting-text">Setting</div>
+		<div>
+			<div id = "regular-button">Setting</div>
 		</div>
-		<div id = "sign-out-button">
-			<div id = "sign-out-text"><%= link_to "Sign Out",  destroy_user_session_path ,method: :delete %></div>
+		<div>
+			<%= link_to "Sign Out",  destroy_user_session_path ,method: :delete, id: "danger-button" %>
+		</div>
+		<div>
+			<%= link_to "Back", root_path, id: "regular-button" %>
 		</div>
 	</div>
 	<div class = "conversation-container">
