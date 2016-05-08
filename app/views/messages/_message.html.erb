@@ -1,9 +1,9 @@
-<br>
+<div>
 	<% if message.user_id == current_user.id %>
 	<br>
 	<div class = "my-message">
 		<div class = "my-message-user"><%= User.find(message.user_id).email %></div>
-		<div>
+		<div style = "max-width:30rem;">
 			<%= message.text %>
 		</div>
 	</div>
@@ -16,5 +16,5 @@
 		</div>
 	</div>
 	<% end %>
-<br>
+</div>
 	

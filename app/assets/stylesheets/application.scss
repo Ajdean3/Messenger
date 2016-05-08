@@ -192,18 +192,26 @@ a:visited{
 	
 }
 .my-message{
+	display:block;
 	float:left;
 	font-size:1.3rem;
 	font-family: "Comic Sans MS";
 	background-color: rgb(106, 175, 230);
 	border-radius: 0.3rem;
+	margin-right:40rem;
+	margin-bottom:1rem;
+	padding:0.3rem 0.4rem;
 }
 .other-message{
+	display:block;
 	float:right;
 	font-size:1.3rem;
 	font-family: "Comic Sans MS";
 	background-color:#9baec8;;
 	border-radius: 0.3rem;
+	margin-left:40rem;
+	margin-bottom:1rem;
+	padding:0.3rem 0.4rem;
 }
 .my-message-user{
 	text-align: left;
