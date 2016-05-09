@@ -14,26 +14,27 @@
 		<div>
 			<div id = "regular-button">Setting</div>
 		</div>
-		-->
-		<div>
-			<%= link_to "Sign Out",  destroy_user_session_path ,method: :delete, id: "danger-button" %>
-		</div>
+	-->
+	<div>
+		<%= link_to "Sign Out",  destroy_user_session_path ,method: :delete, id: "danger-button" %>
 	</div>
-	<div class = "conversation-container">
+</div>
+<div class = "conversation-container">
 
-		<div class = "new-message-div">
-			<%= form_for(:conversation, url: conversations_path) do |f| %>
-			<%=	text_field_tag :receiver_email, params[:receiver_email], placeholder: "Recipient Email" %>
-			<%= text_area_tag :message_to_send, params[:message_to_send], placeholder: "Message to Send" %>
-			<div>
-				<%= f.submit "Send" %>
-			</div>
-			<div style = "clear:both">
-			</div>
-			<% end %>
+	<div class = "new-message-div">
+		<%= form_for(:conversation, url: conversations_path) do |f| %>
+		<%=	text_field_tag :receiver_email, params[:receiver_email], placeholder: "Recipient Email" %>
+		<%= text_area_tag :message_to_send, params[:message_to_send], placeholder: "Message to Send" %>
+		<div>
+			<%= f.submit "Send" %>
 		</div>
-		<div id = "ch_<%= current_user.id %>" class = "conversation-holder">
-			<% @conversations.each do |conversation| %>
+		<div style = "clear:both">
+		</div>
+		<% end %>
+	</div>
+	<div id = "ch_<%= current_user.id %>" class = "conversation-holder">
+		<% @conversations.each do |conversation| %>
+		<div id = "co_<%= conversation.id %>">
 			<%= link_to conversation do %>
 			<div class = "conversation">
 				<div class = "conversation-1st-row">
@@ -56,10 +57,11 @@
 				</div>
 			</div>
 			<% end %>
-			<% end %>
-			<br>
 		</div>
+		<% end %>
+
 	</div>
+</div>
 </div>
 <script type="text/javascript">
 $("#new-message-button").on("click",function(){
