@@ -23,8 +23,10 @@
 			<%= form_for(:conversation, url: conversations_path) do |f| %>
 			<%=	text_field_tag :receiver_email, params[:receiver_email], placeholder: "Recipient Email" %>
 			<%= text_area_tag :message_to_send, params[:message_to_send], placeholder: "Message to Send" %>
-			<div style = "float:right;margin-left:2rem" >
+			<div>
 				<%= f.submit "Send" %>
+			</div>
+			<div style = "clear:both">
 			</div>
 			<% end %>
 		</div>
