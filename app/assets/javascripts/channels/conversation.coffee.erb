@@ -13,7 +13,6 @@ App.conversation = App.cable.subscriptions.create "ConversationChannel",
     if window.id == data['current_user_id']
       conversation_container.append("<br><br><div class = 'my-message'><div class = 'my-message-user'>#{data['user_email']}</div><div>#{data['text']}</div></div><br>")
     else
-      alert "#{data['user_email']}: #{data['text']}"
       conversation_container.append("<br><br><div class = 'other-message'><div class = 'other-message-user'>#{data['user_email']}</div><div>#{data['text']}</div></div><br>")
 
     $("#c_#{data['conversation_id']}").css 'background-color','#4dd3ed'
