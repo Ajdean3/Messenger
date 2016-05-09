@@ -7,15 +7,18 @@
 		</div>	
 		<div id = "index-connection-status">
 		</div>
+		<!--
 		<div>
 			<div id = "regular-button">Setting</div>
+		</div>
+		-->
+		<div>
+			<%= link_to "Back", root_path, id: "regular-button" %>
 		</div>
 		<div>
 			<%= link_to "Sign Out",  destroy_user_session_path ,method: :delete, id: "danger-button" %>
 		</div>
-		<div>
-			<%= link_to "Back", root_path, id: "regular-button" %>
-		</div>
+		
 	</div>
 	<div class = "conversation-container">
 		<%= render @conversation %>
