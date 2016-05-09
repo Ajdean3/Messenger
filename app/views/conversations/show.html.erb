@@ -23,7 +23,7 @@
 			<%= form_for(:conversation, url: conversation_message_path, method: :get, remote: true) do |f|%>
 			<%= f.hidden_field :conversation_id, value: @conversation.id %>
 			<div class = "show-message-input">
-				<%= text_area_tag :message_to_send %>
+				<%= text_area_tag :message_to_send, params[:message_to_send], id: "i" %>
 			</div>
 			<div class = "show-submit-button">
 				<%= f.submit "send", class: "send-button" %>
