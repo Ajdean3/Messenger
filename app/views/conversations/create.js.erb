@@ -1,5 +1,1 @@
-"<% if current_user.id == @receiver.id %>"
-App.conversation.speak("<%= User.find(@receiver.id).email %>","<%= User.find(@receiver.id).email %>","<%= @message.html_safe %>","<%= truncate(@message.html_safe, length: 60) %>","<%= @conversation.id %>");
-"<% else %>"
-App.conversation.speak("<%= current_user.email %>","<%= current_user.id %>","<%= @message.html_safe %>","<%= truncate(@message.html_safe, length: 60) %>","<%= @conversation.id %>");
-"<% end %>"
+App.conversation.speak("<%= current_user.email %>","<%= current_user.id %>","<%= @message.html_safe %>","<%= truncate(@message.html_safe, length: 60) %>","<%= @conversation.id %>","<%= User.find(@receiver.id).email %>");

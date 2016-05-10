@@ -8,20 +8,20 @@ App.conversation = App.cable.subscriptions.create "ConversationChannel",
     conversation_container = $("#c_#{data['conversation_id']}")
     'remove the previous, and update it with new one.'
     $("#co_#{data['conversation_id']}").remove();
-    $("#ch_#{data['receiver_id']}").append("<a href = './conversations/#{data["conversation_id"]}'><div id = 'co_#{data["conversation_id"]}'><div class = 'conversation'><div style = 'float:left;display:inline-block'>#{data['user_email']}</div><div style = 'float:right;display:inline-block'>Just now.</div><div style = 'clear:both'></div><div style = 'padding-left:3rem;color:rgb(155, 174, 200);'>#{data['short_text']}</div></div></div></a>");
-    $("#ch_#{data['sender_id']}").append("<a href = './conversations/#{data["conversation_id"]}'><div id = 'co_#{data["conversation_id"]}'><div class = 'conversation'><div style = 'float:left;display:inline-block'>#{data['user_email']}</div><div style = 'float:right;display:inline-block'>Just now.</div><div style = 'clear:both'></div><div style = 'padding-left:3rem;color:rgb(155, 174, 200);'>#{data['short_text']}</div></div></div></a>");
-
     if window.id == data['current_user_id']
-
+      $("#ch_#{data['sender_id']}").append("<a href = './conversations/#{data["conversation_id"]}'><div id = 'co_#{data["conversation_id"]}'><div class = 'conversation'><div style = 'float:left;display:inline-block'>#{data['message_receiver']}</div><div style = 'float:right;display:inline-block'>Just now.</div><div style = 'clear:both'></div><div style = 'padding-left:3rem;color:rgb(155, 174, 200);'>#{data['short_text']}</div></div></div></a>");
       conversation_container.append("<br><br><div class = 'my-message'><div class = 'my-message-user'>#{data['user_email']}</div><div>#{data['text']}</div></div><br>")
       $("#i").val("")
     else
+      $("#ch_#{data['receiver_id']}").append("<a href = './conversations/#{data["conversation_id"]}'><div id = 'co_#{data["conversation_id"]}'><div class = 'conversation'><div style = 'float:left;display:inline-block'>#{data['user_email']}</div><div style = 'float:right;display:inline-block'>Just now.</div><div style = 'clear:both'></div><div style = 'padding-left:3rem;color:rgb(155, 174, 200);'>#{data['short_text']}</div></div></div></a>");
+      $("#co_#{data['conversation_id']} .conversation").css 'background-color','#4dd3ed'
       $("#c_#{data['conversation_id']}").css 'background-color','#4dd3ed'
       setTimeout( 
         ->
+          $("#co_#{data['conversation_id']} .conversation").css 'background-color','white'
           $("#c_#{data['conversation_id']}").css 'background-color','rgb(235,235,235)'
         ,1000);
       conversation_container.append("<br><br><div class = 'other-message'><div class = 'other-message-user'>#{data['user_email']}</div><div>#{data['text']}</div></div><br>")
-  speak: (user_email, user_id, text, short_text, conversation_id) ->
-    @perform 'speak', {user_email: user_email, user_id: user_id , text: text, short_text: short_text, conversation_id: conversation_id }
+  speak: (user_email, user_id, text, short_text, conversation_id, receiver) ->
+    @perform 'speak', {user_email: user_email, user_id: user_id , text: text, short_text: short_text, conversation_id: conversation_id, receiver: receiver }
 
