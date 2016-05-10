@@ -1,13 +1,15 @@
 # README
-This Messanger App is currently in version Alpha. It's functional,
-however, the designs are not fully completed yet.
+This Messanger App is currently in version Alpha. It's fully working,
+however, not all the functions are implemented.
 What this app is capable of doing right now:
-* Send message to other user (through their email)
-* AJAX on both end, instant messaging
+* Send messages to other user (through their email)
+* Immediate messaging both ends.
+* Each conversation shows last message, other user, and the last message along with its time stamp.
+* Instant notification
+* Account setting
 
 
 What this app is not capable of doing right now:
-* Setting
 * Deleting a conversation
-* Notification
+* Auto-scroll when new message arrives.
 
