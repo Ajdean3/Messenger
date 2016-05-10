@@ -5,13 +5,13 @@
 			<%= image_tag("quickmessanger-logo.jpg", class: "logo-img") %>
 			<div id = "logo-text">QuickMessanger</div>
 		</div>	
+		<div>
+			<%= link_to current_user.email, edit_user_registration_path, id: "regular-button" %>
+		</div>
 		<div id = "index-connection-status">
 		</div>
 		<div id = "new-message-button">
 			<div id = "regular-button" style = "cursor:pointer">New Message</div>
-		</div>
-		<div>
-			<%= link_to "Account", edit_user_registration_path, id: "regular-button" %>
 		</div>
 	<div>
 		<%= link_to "Sign Out",  destroy_user_session_path ,method: :delete, id: "danger-button" %>
@@ -22,7 +22,7 @@
 	<div class = "new-message-div">
 		<%= form_for(:conversation, url: conversations_path, remote: true) do |f| %>
 		<%=	text_field_tag :receiver_email, params[:receiver_email], placeholder: "Recipient Email" %>
-		<%= text_area_tag :message_to_send, params[:message_to_send], placeholder: "Message to Send" %>
+		<%= text_area_tag :message_to_send, params[:message_to_send], placeholder: "Message to Send",id: "i" %>
 		<div>
 			<%= f.submit "Send" %>
 		</div>

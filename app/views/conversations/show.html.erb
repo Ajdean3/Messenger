@@ -6,10 +6,10 @@
 			<%= image_tag("quickmessanger-logo.jpg", class: "logo-img") %>
 			<div id = "logo-text">QuickMessanger</div>
 		</div>	
-		<div id = "index-connection-status">
-		</div>
 		<div>
-			<%= link_to "Account", edit_user_registration_path, id: "regular-button" %>
+			<%= link_to current_user.email, edit_user_registration_path, id: "regular-button" %>
+		</div>
+		<div id = "index-connection-status">
 		</div>
 		<div>
 			<%= link_to "Back", root_path, id: "regular-button" %>
