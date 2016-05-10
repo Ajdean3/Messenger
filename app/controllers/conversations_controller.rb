@@ -5,13 +5,13 @@ class ConversationsController < ApplicationController
 	end
 
 	def create
-		receiver = User.all.where('email = ?', params[:receiver_email]).first
+		@receiver = User.all.where('email = ?', params[:receiver_email]).first
 		#if the receiver is found
-		if receiver
+		if @receiver
 			#if the conversation doesnt existm then create new, else go to their convo.
-			if Conversation.all.where('(sender_id=? and receiver_id = ?) OR (sender_id=? and receiver_id=?)',current_user,receiver ,receiver, current_user).blank?
+			if Conversation.all.where('(sender_id=? and receiver_id = ?) OR (sender_id=? and receiver_id=?)',current_user,@receiver ,@receiver, current_user).blank?
 				@conversation = Conversation.new
-				@conversation.receiver_id = receiver.id
+				@conversation.receiver_id = @receiver.id
 				@conversation.sender_id = current_user.id
 				@conversation.message_count = 1
 				@message = params[:message_to_send]
@@ -31,11 +31,17 @@ class ConversationsController < ApplicationController
 					render :index
 				end
 			else
-				@conversation = Conversation.all.where('(sender_id=? and receiver_id = ?) OR (sender_id=? and receiver_id=?)',current_user,receiver ,receiver, current_user).first
-				@conversation.messages.create!(user_id: current_user.id, text: params[:message_to_send])
+				@conversation = Conversation.all.where('(sender_id=? and receiver_id = ?) OR (sender_id=? and receiver_id=?)',current_user,@receiver ,@receiver, current_user).first
+				#@conversation.messages.create!(user_id: current_user.id, text: params[:message_to_send])
 				@conversation.message_count = @conversation.message_count + 1
+				@message = params[:message_to_send]
 				@conversation.save(validate: false)
-				redirect_to @conversation
+				respond_to do |format|
+					format.html{redirect_to root_path}
+					format.js
+				end	
+				
+				#redirect_to @conversation
 			end
 		else
 			redirect_to root_path , alert: "There is no user with that Email address."
