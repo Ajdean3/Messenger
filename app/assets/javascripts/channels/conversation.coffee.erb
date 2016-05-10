@@ -23,7 +23,7 @@ App.conversation = App.cable.subscriptions.create "ConversationChannel",
           $("#co_#{data['conversation_id']} .conversation").css 'background-color','white'
           $("#c_#{data['conversation_id']}").css 'background-color','rgb(235,235,235)'
         ,1000);
-      conversation_container.append("<br><br><div class = 'other-message'><div class = 'other-message-user'>#{data['user_email']}</div><div>#{data['text']}</div></div><br>")
+      conversation_container.append("<br><br><div class = 'other-message'><div class = 'other-message-user'>#{data['current_user_email']}</div><div>#{data['text']}</div></div><br>")
   speak: (user_id, text, short_text, conversation_id, receiver_id) ->
     @perform 'speak', {user_id: user_id , text: text, short_text: short_text, conversation_id: conversation_id, receiver_id: receiver_id }
 

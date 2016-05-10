@@ -52,6 +52,7 @@ class ConversationsController < ApplicationController
 	end
 	def message
 		@conversation = Conversation.find(params[:conversation][:conversation_id])
+		
 		@message = params[:message_to_send]
 		respond_to do |format|
 			format.html{redirect_to @conversation}

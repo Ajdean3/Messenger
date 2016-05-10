@@ -1,4 +1,5 @@
 <script>var id = '<%= current_user.id %>'</script>
+<% if (current_user.id == @conversation.receiver_id) or (current_user.id == @conversation.sender_id) %>
 <div id = "index-container">
 	<div id = "side-container">
 		<div id = "logo">
@@ -41,3 +42,8 @@
 	</script>
 	
 </div>
+<% else %>
+<div>
+	Access Denied
+</div>
+<% end %>
