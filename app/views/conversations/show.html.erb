@@ -36,5 +36,10 @@
 	</div>
 	<div style = "clear:both">
 	</div>
+	<script>
+	$('#i').keypress( function( e ) {
+	  if( e.keyCode == 13 ) { $(this).closest('form').trigger('submit'); }
+	} );
+	</script>
 	
 </div>
