@@ -10,13 +10,12 @@ App.conversation = App.cable.subscriptions.create "ConversationChannel",
     $("#co_#{data['conversation_id']}").remove();
     if window.id == data['current_user_id']
       'sender end'
-      conversation_container.append("<br><br><div class = 'my-message'><div class = 'my-message-user'>#{data['current_user_email']}</div><div>#{data['text']}</div></div><br>")
+      conversation_container.append("<br><br><div class = 'my-message'><div class = 'my-message-user'>#{data['current_user_email']}</div><div class = 'my-message-time'>just now.</div><div style = 'clear:both'></div><div>#{data['text']}</div></div><br>")
       $("#i").val("")
       $("#ch_#{data['current_user_id']}").append("<a href = './conversations/#{data["conversation_id"]}'><div id = 'co_#{data["conversation_id"]}'><div class = 'conversation'><div style = 'float:left;display:inline-block'>#{data['receiver_email']}</div><div style = 'float:right;display:inline-block'>Just now.</div><div style = 'clear:both'></div><div style = 'padding-left:3rem;color:rgb(155, 174, 200);'>#{data['short_text']}</div></div></div></a>");
-      
     else
       'receiver end'
-      conversation_container.append("<br><br><div class = 'other-message'><div class = 'other-message-user'>#{data['current_user_email']}</div><div>#{data['text']}</div></div><br>")
+      conversation_container.append("<br><br><div class = 'other-message'><div class = 'other-message-user'>#{data['current_user_email']}</div><div class = 'other-message-time'>just now.</div><div style = 'clear:both'></div><div>#{data['text']}</div></div><br>")
       $("#ch_#{data['receiver_id']}").append("<a href = './conversations/#{data["conversation_id"]}'><div id = 'co_#{data["conversation_id"]}'><div class = 'conversation'><div style = 'float:left;display:inline-block'>#{data['current_user_email']}</div><div style = 'float:right;display:inline-block'>Just now.</div><div style = 'clear:both'></div><div style = 'padding-left:3rem;color:rgb(155, 174, 200);'>#{data['short_text']}</div></div></div></a>");
       $("#co_#{data['conversation_id']} .conversation").css 'background-color','#4dd3ed'
       $("#c_#{data['conversation_id']}").css 'background-color','#4dd3ed'

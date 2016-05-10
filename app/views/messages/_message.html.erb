@@ -3,6 +3,9 @@
 	<br>
 	<div class = "my-message">
 		<div class = "my-message-user"><%= User.find(message.user_id).email %></div>
+		<div style = "float:left;display:inline-block;font-size:0.3rem;"><%= message.created_at.strftime("%m-%d %l:%M %p") %></div>
+		<div style = "clear:both">
+		</div>
 		<div style = "max-width:30rem;">
 			<%= message.text %>
 		</div>
@@ -11,6 +14,9 @@
 	<br>
 	<div class = "other-message">
 		<div class = "other-message-user"><%= User.find(message.user_id).email %></div>
+		<div style = "float:right;display:inline-block;font-size:0.3rem;"><%= message.created_at.strftime("%m-%d %l:%M %p") %></div>
+		<div style = "clear:both">
+		</div>
 		<div>
 			<%= message.text %>
 		</div>
