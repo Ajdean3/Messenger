@@ -14,11 +14,18 @@ class ConversationsController < ApplicationController
 				@conversation.receiver_id = receiver.id
 				@conversation.sender_id = current_user.id
 				@conversation.message_count = 1
+				@message = params[:message_to_send]
+				
 				#validation to false due to "user must exist" bug
 				if @conversation.save(validate: false)
-					@conversation.messages.create!(user_id: current_user.id, text: params[:message_to_send])
+					#@conversation.messages.create!(user_id: current_user.id, text: params[:message_to_send])
 					#render plain: "created successfully"
-					redirect_to root_path
+					@message = params[:message_to_send]
+					respond_to do |format|
+						format.html{redirect_to root_path}
+						format.js
+					end	
+								
 				else
 					@conversations = Conversation.all.where('sender_id=? OR receiver_id=?',current_user,current_user)
 					render :index

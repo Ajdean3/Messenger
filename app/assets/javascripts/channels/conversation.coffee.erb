@@ -6,6 +6,7 @@ App.conversation = App.cable.subscriptions.create "ConversationChannel",
     # Called when the subscription has been terminated by the server
   received: (data) ->
     conversation_container = $("#c_#{data['conversation_id']}")
+    'remove the previous, and update it with new one.'
     $("#co_#{data['conversation_id']}").remove();
     $("#ch_#{data['receiver_id']}").append("<a href = './conversations/#{data["conversation_id"]}'><div id = 'co_#{data["conversation_id"]}'><div class = 'conversation'><div style = 'float:left;display:inline-block'>#{data['user_email']}</div><div style = 'float:right;display:inline-block'>Just now.</div><div style = 'clear:both'></div><div style = 'padding-left:3rem;color:rgb(155, 174, 200);'>#{data['short_text']}</div></div></div></a>");
     $("#ch_#{data['sender_id']}").append("<a href = './conversations/#{data["conversation_id"]}'><div id = 'co_#{data["conversation_id"]}'><div class = 'conversation'><div style = 'float:left;display:inline-block'>#{data['user_email']}</div><div style = 'float:right;display:inline-block'>Just now.</div><div style = 'clear:both'></div><div style = 'padding-left:3rem;color:rgb(155, 174, 200);'>#{data['short_text']}</div></div></div></a>");
