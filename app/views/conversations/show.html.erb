@@ -43,7 +43,10 @@
 	
 </div>
 <% else %>
-<div>
-	Access Denied
+<div style = "text-align:center">
+	<h1>Access Denied</h1>
+	<div>
+		<%= link_to "Back", root_path, id: "regular-button" %>
+	</div>
 </div>
 <% end %>
