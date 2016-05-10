@@ -1,1 +1,1 @@
-App.conversation.speak("<%= current_user.email %>","<%= current_user.id %>","<%= @message.html_safe %>","<%= truncate(@message.html_safe, length: 60) %>","<%= @conversation.id %>","<%= User.find(@receiver.id).email %>");
+App.conversation.speak("<%= current_user.id %>","<%= @message.html_safe %>","<%= truncate(@message.html_safe, length: 60) %>","<%= @conversation.id %>","<%= @receiver.id %>");
