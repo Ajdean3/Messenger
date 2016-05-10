@@ -11,9 +11,10 @@ class ConversationChannel < ApplicationCable::Channel
   def speak(data)
     @current_message = Message.create!(user_id: data['user_id'], text: data['text'], conversation_id: data['conversation_id'])
   	@receiver_id = Conversation.find(data['conversation_id']).receiver_id
+    @sender_id = Conversation.find(data['conversation_id']).sender_id
     #find the conversation, and its user.
     @receiver_email = User.find(@receiver_id).email
-    ActionCable.server.broadcast "conversation_channel", {user_email: data['user_email'], text: data['text'], short_text: data['short_text'], conversation_id: data['conversation_id'], current_user_id: data['user_id'], receiver_id: @receiver_id, receiver_email: @receiver_email ,current_message: @current_message.id }
+    ActionCable.server.broadcast "conversation_channel", {user_email: data['user_email'], text: data['text'], short_text: data['short_text'], conversation_id: data['conversation_id'], current_user_id: data['user_id'], receiver_id: @receiver_id, receiver_email: @receiver_email , sender_id: @sender_id, current_message: @current_message.id }
   	
   end
 end
