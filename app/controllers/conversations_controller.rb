@@ -52,7 +52,11 @@ class ConversationsController < ApplicationController
 	end
 	def message
 		@conversation = Conversation.find(params[:conversation][:conversation_id])
-		
+		if current_user == @conversation.sender_id
+			@receiver = @conversation.receiver_id
+		else
+			@receiver = @conversation.sender_id
+		end
 		@message = params[:message_to_send]
 		respond_to do |format|
 			format.html{redirect_to @conversation}

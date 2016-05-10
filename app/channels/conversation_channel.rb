@@ -11,7 +11,6 @@ class ConversationChannel < ApplicationCable::Channel
     @current_message = Message.create!(user_id: data['user_id'], text: data['text'], conversation_id: data['conversation_id'])
     #find the conversation, and its user.
     @current_user_email = User.find(data['user_id']).email
-    data['receiver_id'] ||= data['user_id']
     @receiver_email = User.find(data['receiver_id']).email
     ActionCable.server.broadcast "conversation_channel", {current_user_email: @current_user_email, current_user_id: data['user_id'], text: data['text'], short_text: data['short_text'], conversation_id: data['conversation_id'], current_message: @current_message.id, receiver_id: data['receiver_id'], receiver_email: @receiver_email }
   end
